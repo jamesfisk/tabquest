@@ -94,6 +94,17 @@ body {
   transform: translate(-30%, -35%) scale(2.5);
 }
 
+.hero-loading {
+  width: 160px;
+  background: url("/Run.png");
+  background-repeat: no-repeat;
+  animation-name: hero-sprite; 
+  animation-duration: 0.5s;
+  animation-timing-function: steps(8);
+  animation-iteration-count: infinite;
+  transform: translate(0%, -25%) scale(2.5);
+}
+
 @keyframes hero-sprite {
   from { background-position: 0px; }
   to { background-position: -1280px; }
@@ -109,7 +120,7 @@ body {
   animation-iteration-count: 1;
   animation-direction: normal;
   animation-fill-mode: forwards;
-  transform: translate(-5%, -35%) scale(2.5);
+  transform: translate(0%, -35%) scale(2.5);
 }
 
 @keyframes hero-death-sprite {

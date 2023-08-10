@@ -18,7 +18,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={arimo.className}>
       <div className="content fixed top-0 right-0 w-full h-full z-0">
-        <div className="layer absolute bg-gradient-to-br from-sky-200 to-sky-300 bg-cover w-full h-full"></div>
+        <div className="layer absolute bg-gradient-to-br from-sky-200 to-sky-300 dark:from-sky-800 dark:to-sky-950 bg-cover w-full h-full"></div>
         <div className="layer pixel absolute clouds bg-cover w-full h-full"></div>
         <div className="layer pixel absolute clouds2 bg-cover w-full h-full"></div>
         <div className="layer pixel absolute clouds3 bg-cover w-full h-full"></div>
