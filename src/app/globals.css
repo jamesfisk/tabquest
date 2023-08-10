@@ -25,3 +25,110 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+.pixel {
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+.layer.background {
+  background-image: url("/0_sky.png");
+}
+
+.layer.foreground {
+  background-image: url("/4_ground.png");
+}
+
+.layer.city {
+  background-image: url("/3_city.png");
+}
+
+.layer.clouds {
+  background-image: url("/2_clouds.png");
+	animation: cloud-shift 60s linear 1 forwards;
+  animation-iteration-count: 1;
+}
+
+.layer.clouds2 {
+  background-image: url("/2_clouds.png");
+  left: -100%;
+	animation: cloud-shift2 120s linear 1 forwards;
+  animation-iteration-count: infinite;
+}
+
+.layer.clouds3 {
+  background-image: url("/2_clouds.png");
+  left: -100%;
+	animation: cloud-shift2 120s linear 1 forwards;
+  animation-iteration-count: infinite;
+  animation-delay: 60s;
+}
+
+@keyframes cloud-shift {
+  from {
+    left: 0;
+  }
+  to {
+      left: 100%;
+  }
+}
+
+@keyframes cloud-shift2 {
+  from {
+    left: -100%;
+  }
+  to {
+      left: 100%;
+  }
+}
+
+.hero {
+  width: 160px;
+  background: url("/Idle.png");
+  background-repeat: no-repeat;
+  animation-name: hero-sprite; 
+  animation-duration: 1.5s;
+  animation-timing-function: steps(8);
+  animation-iteration-count: infinite;
+  transform: translate(-30%, -35%) scale(2.5);
+}
+
+@keyframes hero-sprite {
+  from { background-position: 0px; }
+  to { background-position: -1280px; }
+}
+
+.hero-death {
+  width: 160px;
+  background: url("/Death.png");
+  background-repeat: no-repeat;
+  animation-name: hero-death-sprite; 
+  animation-duration: 1.5s;
+  animation-timing-function: steps(5);
+  animation-iteration-count: 1;
+  animation-direction: normal;
+  animation-fill-mode: forwards;
+  transform: translate(-5%, -35%) scale(2.5);
+}
+
+@keyframes hero-death-sprite {
+  from { background-position: 0px; }
+  to { background-position: -800px; }
+}
+
+.hero-slash {
+  width: 160px;
+  background: url("/Attack.png");
+  background-repeat: no-repeat;
+  animation-name: hero-slash-sprite; 
+  animation-duration: 1.0s;
+  animation-timing-function: steps(4);
+  animation-iteration-count: infinite;
+  transform: translate(-5%, -25%) scale(2.2);
+}
+
+@keyframes hero-slash-sprite {
+  from { background-position: 0px; }
+  to { background-position: -640px; }
+}
