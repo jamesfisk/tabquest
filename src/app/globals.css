@@ -91,7 +91,7 @@ body {
   animation-duration: 1.5s;
   animation-timing-function: steps(8);
   animation-iteration-count: infinite;
-  transform: translate(-30%, -35%) scale(2.5);
+  transform: translate(-10%, -35%) scale(2.5);
 }
 
 .hero-loading {

@@ -1,0 +1,13 @@
+##TODO
+- [ ] Refactor API to only return one question at a time
+- [ ] Info Modal
+- [ ] Deploy
+- [ ] Database
+- [ ] User accounts
+- [ ] Custom question banks
+- [ ] Multiple subjects
+- [ ] Split up components
+- [ ] Write extension
+- [x] Rename app
+- [x] Header
+- [ ] Refactor images to use next/image

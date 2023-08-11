@@ -1,0 +1,27 @@
+import Image from 'next/image';
+import Link from 'next/link';
+
+export default function Nav() {
+    return (
+        <nav className="bg-opacity-0">
+            <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+                <div className="flex items-center">
+                    <Image 
+                        src="/quill.png" 
+                        width={24}
+                        height={24}
+                        className="" 
+                        alt="TabQuest Logo" />
+                    <span className="self-center text-3xl font-semibold pl-2 whitespace-nowrap dark:text-white">TabQuest</span>
+                </div>
+                <ul className="font-medium text-lg flex flex-col rounded-lg md:flex-row md:space-x-8">
+                    <li>
+                    <Link href="/info" className="block py-2 pl-3 pr-4 " aria-current="page">
+                        ℹ️
+                    </Link>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    );
+}

@@ -3,14 +3,15 @@ import React, { useState } from 'react';
 import useSWR from 'swr';
 import { getQuestion } from '../utils';
 import Search from '../../components/search';
-import { VT323 } from 'next/font/google'
+import Slab from '@/components/slab';
+import { Metadata } from 'next';
 
-const vt323 = VT323({
-  weight: '400',
-  subsets: ['latin']
-})
+export const metadata: Metadata = {
+  title: 'New Tab',
+  description: 'Begin your TabQuest',
+}
 
-//Write a fetcher function to wrap the native fetch function and return the result of a call to url in json format
+//fetcher function to wrap the native fetch function and return the result of a call to url in json format
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 export enum QuestionAnswerState {
@@ -22,8 +23,6 @@ export enum QuestionAnswerState {
 }
 
 export default function NewTab() {
-  //Set up SWR to run the fetcher function when calling "/api/staticdata"
-  //There are 3 possible states: (1) loading when data is null (2) ready when the data is returned (3) error when there was an error fetching the data
   const { data, error } = useSWR('/api/staticdata', fetcher);
   const [question, setQuestion] = useState<VocabQuestion | undefined>(undefined);
   const [answerState, setAnswerState] = useState(QuestionAnswerState.Loading);
@@ -72,23 +71,6 @@ export default function NewTab() {
     );
   }
 
-  const renderBody = () => {
-    switch(answerState) {
-      case(QuestionAnswerState.Unanswered):
-        return renderQuestion();
-      case(QuestionAnswerState.AnsweredCorrectly):
-        return <Search word={question!} wasCorrect={true} resetState={resetAnswerState} />;
-      case(QuestionAnswerState.AnsweredIncorrectly):
-        return <Search word={question!} wasCorrect={false} resetState={resetAnswerState} />;
-      case(QuestionAnswerState.Loading):
-        return renderLoading();
-      case(QuestionAnswerState.Error):
-        return renderError();
-      default:
-        return <div>Something went wrong</div>
-    }
-  }
-
   const renderQuestion = () => {
     return (
       <div className='flex flex-col justify-between h-full'>
@@ -113,11 +95,26 @@ export default function NewTab() {
     );
   }
 
+  const renderBody = () => {
+    switch(answerState) {
+      case(QuestionAnswerState.Unanswered):
+        return renderQuestion();
+      case(QuestionAnswerState.AnsweredCorrectly):
+        return <Search word={question!} wasCorrect={true} resetState={resetAnswerState} />;
+      case(QuestionAnswerState.AnsweredIncorrectly):
+        return <Search word={question!} wasCorrect={false} resetState={resetAnswerState} />;
+      case(QuestionAnswerState.Loading):
+        return renderLoading();
+      case(QuestionAnswerState.Error):
+        return renderError();
+      default:
+        return <div>Something went wrong</div>
+    }
+  }
+
   return (
-    <main className={`flex flex-col min-h-screen pt-48 md:px-24 items-center ${vt323.className}`}>
-      <div className="block lg:w-1/2 w-full h-96 p-2 md:p-8 bg-slate-100 border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-        {renderBody()}
-      </div>
-    </main>
+    <Slab>
+      {renderBody()}
+    </Slab>
   )
 }

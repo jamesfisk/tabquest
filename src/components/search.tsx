@@ -56,9 +56,9 @@ export default function Search(props: SearchProps) {
         <div className='flex flex-col justify-between h-full'>
             { props.wasCorrect ? gotItRight() : gotItWrong() }
             <div className={``}>
-                <div className={`flex flex-row w-full ${arimo.className}`}>
-                    <input type="text" placeholder="Search the web" value={searchQuery} onChange={onTextChange}
-                        className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'>
+                <div className={`flex flex-row w-full `}>
+                    <input type="text" placeholder="Be on with your quest" value={searchQuery} onChange={onTextChange}
+                        className='bg-gray-50 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'>
                         </input>
                     <button onClick={onSearch} type="submit" className="p-2.5 ml-2 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                         <svg className="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
@@ -68,9 +68,9 @@ export default function Search(props: SearchProps) {
                     </button>
                 </div>
                 <div 
-                    className='text-red-800 w-full text-center text-sm cursor-pointer'
+                    className='text-red-800 w-full text-center text-sm cursor-pointer pt-1'
                     onClick={props.resetState}>
-                        Try another word?
+                        Or try another word?
                 </div>
             </div>
         </div>
