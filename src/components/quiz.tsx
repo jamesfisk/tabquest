@@ -60,7 +60,7 @@ export default function Quiz() {
   const renderError = () => {
     return (
       <div>
-        Sorry, there's been an error.
+        Sorry, there&apos;s been an error.
       </div>
     );
   }
