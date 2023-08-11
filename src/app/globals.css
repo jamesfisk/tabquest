@@ -115,12 +115,12 @@ body {
   background: url("/Death.png");
   background-repeat: no-repeat;
   animation-name: hero-death-sprite; 
-  animation-duration: 1.5s;
+  animation-duration: 1.0s;
   animation-timing-function: steps(5);
   animation-iteration-count: 1;
   animation-direction: normal;
   animation-fill-mode: forwards;
-  transform: translate(0%, -35%) scale(2.5);
+  transform: translate(25%, -35%) scale(2.5);
 }
 
 @keyframes hero-death-sprite {
@@ -133,7 +133,7 @@ body {
   background: url("/Attack.png");
   background-repeat: no-repeat;
   animation-name: hero-slash-sprite; 
-  animation-duration: 1.0s;
+  animation-duration: 0.75s;
   animation-timing-function: steps(4);
   animation-iteration-count: infinite;
   transform: translate(-20%, -25%) scale(2.2);

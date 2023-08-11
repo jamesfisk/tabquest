@@ -48,7 +48,7 @@ export default function Search(props: SearchProps) {
                 <div className='text-center  text-3xl font-semibold'>Not quite!</div>
                 <div className='flex flex-row justify-between h-full'>
                     <div className='hero-death pixel'></div>
-                    <div className='text-lg w-3/4 pt-6'>
+                    <div className='text-lg w-1/2 pt-6'>
                         <b className='text-2xl'>{props.word.options[props.word.answer]} ({props.word.type}): </b>{props.word.definition}
                     </div>
                 </div>
@@ -59,9 +59,9 @@ export default function Search(props: SearchProps) {
     return (
         <div className='flex flex-col justify-between h-full'>
             { props.wasCorrect ? gotItRight() : gotItWrong() }
-            <div className={``}>
+            <div className={`pb-6 md:pb-0`}>
                 <div className={`flex flex-row w-full `}>
-                    <input type="text" placeholder="Be on with your quest..." value={searchQuery} onChange={onTextChange}
+                    <input type="text" placeholder="Be on with your quest..." value={searchQuery} onChange={onTextChange} alt='Google Search'
                         className='bg-gray-50 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'>
                         </input>
                     <button onClick={onSearch} type="submit" className="p-2.5 ml-2 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
