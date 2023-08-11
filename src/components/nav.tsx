@@ -6,12 +6,14 @@ export default function Nav() {
         <nav className="bg-opacity-0">
             <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
                 <div className="flex items-center">
-                    <Image 
-                        src="/quill.png" 
-                        width={24}
-                        height={24}
-                        className="" 
-                        alt="TabQuest Logo" />
+                    <Link href="/" className='cursor-pointer'>
+                        <Image 
+                            src="/quill.png" 
+                            width={24}
+                            height={24}
+                            className="" 
+                            alt="TabQuest Logo" />
+                    </Link>
                     <span className="self-center text-3xl font-semibold pl-2 whitespace-nowrap dark:text-white">TabQuest</span>
                 </div>
                 <ul className="font-medium text-lg flex flex-col rounded-lg md:flex-row md:space-x-8">

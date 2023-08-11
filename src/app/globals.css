@@ -136,7 +136,7 @@ body {
   animation-duration: 1.0s;
   animation-timing-function: steps(4);
   animation-iteration-count: infinite;
-  transform: translate(-5%, -25%) scale(2.2);
+  transform: translate(-20%, -25%) scale(2.2);
 }
 
 @keyframes hero-slash-sprite {

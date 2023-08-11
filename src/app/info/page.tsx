@@ -30,7 +30,7 @@ export default function Info(){
                     </div>
                 </div>
                 <div className="flex flex-row justify-center"><p className="pr-1">Made with</p>
-                <Image width={24} height={24} src={"/potion.png"} alt="Love Potion"/>
+                <Image width={24} height={24} src={"/potion.png"} alt="Love Potion" className="pixel"/>
                 <p className="pl-1">by <a href="https://github.com/jamesfisk" target="_blank" className="text-blue-300 cursor-pointer">james</a></p>
                 </div>
             </div>

@@ -11,3 +11,4 @@
 - [x] Rename app
 - [x] Header
 - [ ] Refactor images to use next/image
+- [ ] Improve client/server renders

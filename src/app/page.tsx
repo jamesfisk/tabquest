@@ -1,4 +1,3 @@
-'use client'
 import Slab from '@/components/slab';
 import { Metadata } from 'next';
 import Link from 'next/link';
