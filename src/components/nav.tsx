@@ -14,7 +14,10 @@ export default function Nav() {
                             className="" 
                             alt="TabQuest Logo" />
                     </Link>
-                    <span className="self-center text-3xl font-semibold pl-2 whitespace-nowrap dark:text-white">TabQuest</span>
+                    <div className="lh-narrow self-center text-2xl font-semibold pl-2 whitespace-nowrap dark:text-white">
+                        <div className='tiny-buffer'>Random</div> 
+                        <div>Encounters</div>
+                    </div>
                 </div>
                 <ul className="font-medium text-lg flex flex-col rounded-lg md:flex-row md:space-x-8">
                     <li>

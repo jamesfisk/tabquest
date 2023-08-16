@@ -29,8 +29,7 @@ export default function Quiz() {
     setAnswerState(QuestionAnswerState.Loading);
   }
   else if (data && question === undefined) {
-    const parsed = JSON.parse(data) as WordData[];
-    const question = getQuestion(parsed);
+    const question = getQuestion(data);
     setQuestion(question);
     setAnswerState(QuestionAnswerState.Unanswered);
   }

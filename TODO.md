@@ -1,14 +1,16 @@
 ##TODO
 - [ ] Refactor API to only return one question at a time
-- [ ] Info Modal
-- [ ] Deploy
-- [ ] Database
-- [ ] User accounts
+- [x] Info Modal
+- [x] Deploy
+- [ ] Postgres Database
+- [ ] Move question bank into database
 - [ ] Custom question banks
 - [ ] Multiple subjects
+- [ ] User accounts (nextauth)
+- [ ] Global app settings (animation, font) (redux? recoil? jotai?)
 - [ ] Split up components
-- [ ] Write extension
-- [x] Rename app
+- [x] Write extension
+- [ ] Rename app
 - [x] Header
-- [ ] Refactor images to use next/image
-- [ ] Improve client/server renders
+- [ ] Refactor all images to use next/image
+- [x] Improve client/server renders

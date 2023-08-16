@@ -4,14 +4,14 @@ import Image from 'next/image';
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: 'TabQuest Info',
-  description: 'About TabQuest',
+  title: 'About Random Encounters',
+  description: 'Random Encounters is an epic language-learning journey every time you open a new tab.',
 }
 
 export default function Info(){
     return(
         <Slab>
-            <div className="h-full flex flex-col justify-between">
+            <div className="h-full px-3 flex flex-col justify-between">
                 <div className="text-lg">
                     <div className="w-full flex flex-row justify-end text-xl">
                         <Link href="/tab">X</Link>
@@ -24,7 +24,7 @@ export default function Info(){
                                 <li>More subjects</li>
                                 <li>Customized question banks</li>
                                 <li>Quester learning stats</li>
-                                <li>Smart learning algorithms</li>
+                                <li>Targeted subject review</li>
                             </ul>
                         </div>
                     </div>

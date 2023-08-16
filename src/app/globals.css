@@ -46,21 +46,21 @@ body {
 
 .layer.clouds {
   background-image: url("/2_clouds.png");
-	animation: cloud-shift 60s linear 1 forwards;
+	animation: cloud-shift 120s linear 1 forwards;
   animation-iteration-count: 1;
 }
 
 .layer.clouds2 {
   background-image: url("/2_clouds.png");
   left: -100%;
-	animation: cloud-shift2 120s linear 1 forwards;
+	animation: cloud-shift2 240s linear 1 forwards;
   animation-iteration-count: infinite;
 }
 
 .layer.clouds3 {
   background-image: url("/2_clouds.png");
   left: -100%;
-	animation: cloud-shift2 120s linear 1 forwards;
+	animation: cloud-shift2 240s linear 1 forwards;
   animation-iteration-count: infinite;
   animation-delay: 60s;
 }
@@ -142,4 +142,12 @@ body {
 @keyframes hero-slash-sprite {
   from { background-position: 0px; }
   to { background-position: -640px; }
+}
+
+.lh-narrow {
+  line-height: 0.65;
+}
+
+.tiny-buffer {
+  padding-left: 0.05rem;
 }
