@@ -4,8 +4,8 @@ import Link from 'next/link';
 import React from 'react';
 
 export const metadata: Metadata = {
-  title: 'TabQuest',
-  description: 'Begin your TabQuest',
+  title: 'Random Encounters',
+  description: 'Begin your Quest',
 }
 
 export default function Home() {
