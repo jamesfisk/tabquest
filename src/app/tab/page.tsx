@@ -1,7 +1,6 @@
 import React from 'react';
-import Slab from '@/components/slab';
 import { Metadata } from 'next';
-import Quiz from '@/components/quiz';
+import AppStoreWrapper from '@/components/appStoreWrapper';
 
 export const metadata: Metadata = {
   title: 'New Tab',
@@ -10,8 +9,6 @@ export const metadata: Metadata = {
 
 export default function NewTab() {
   return (
-    <Slab>
-      <Quiz/>
-    </Slab>
+    <AppStoreWrapper/>
   )
 }

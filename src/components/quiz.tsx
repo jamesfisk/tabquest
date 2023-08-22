@@ -1,9 +1,7 @@
-'use client'
 import React, { useState } from 'react';
 import useSWR from 'swr';
 import { getQuestion } from '../app/utils';
 import Search from './search';
-
 
 //fetcher function to wrap the native fetch function and return the result of a call to url in json format
 const fetcher = (url: string) => fetch(url).then((res) => res.json());

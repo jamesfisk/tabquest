@@ -71,9 +71,9 @@ export default function Search(props: SearchProps) {
                     </button>
                 </form>
                 <div 
-                    className='text-red-800 w-full text-center text-sm cursor-pointer pt-1'
+                    className='text-red-800 dark:text-red-400 w-full text-center text-sm cursor-pointer pt-2'
                     onClick={props.resetState}>
-                        Or try another word?
+                        Or try another word...?
                 </div>
             </div>
         </div>

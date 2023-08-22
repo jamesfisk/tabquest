@@ -38,10 +38,8 @@ export default function RootLayout({
         <div className="layer pixel absolute city bg-cover w-full h-full"></div>
         <div className="layer pixel absolute foreground bg-cover w-full h-full"></div>
       </div>
-      <div className="z-10 absolute w-full">
-        <Nav/>
-        {children}
-      </div>
+      {children}
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js"></script>
       </body>
     </html>
   )
