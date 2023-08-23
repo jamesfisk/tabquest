@@ -8,7 +8,7 @@ export default function About(){
     return(
         <div className="h-full px-3 flex flex-col justify-between">
             <div className="text-lg">
-                <div className="w-full flex flex-row justify-end text-xl">
+                <div className="w-full flex flex-row justify-end text-xl cursor-pointer">
                     <div onClick={() => { setCurrentViewState({currentView: View.Quiz }) }}>X</div>
                 </div>
                 <p>Embark on an epic language-learning journey every time you open a new tab in your web browser! Enhance your vocabulary and conquer new linguistic realms while surfing the web.</p>

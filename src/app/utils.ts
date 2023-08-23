@@ -1,21 +1,48 @@
+import { settingsState } from "@/store";
+import { Lato, VT323 } from "next/font/google";
+import { useRecoilValue } from "recoil";
 
 
-const getRandomElement = (arr: WordData[]): WordData => {
+export function getRandomElement(arr: any[]): any {
     return arr[Math.floor((Math.random()*arr.length))];
 }
 
-export function getQuestion(words: WordData[]): VocabQuestion {
-    const word = getRandomElement(words);
-    let question: VocabQuestion = {
-        definition: word.definition,
-        type: word.type,
+export function getMathQuestion(questions: MathQuestion[]): QuizQuestion {
+    let question = getRandomElement(questions) as MathQuestion;
+    while (question.choices === undefined || question.diagramRef !== undefined) {
+        question = getRandomElement(questions);
+    }
+    let formattedQuestion = {
+        question: question.question,
+        answer: 0,
+        answerDescription: "",
+        options: [] as string[],
+        useLatex: true
+    };
+    const choices = Object.keys(question.choices);
+    choices.forEach((choice, i) => {
+        formattedQuestion.options.push(question.choices[choice]);
+        if (choice === question.answer) {
+            formattedQuestion.answer = i;
+            formattedQuestion.answerDescription = `${question.question}\n${question.choices[choice]}`
+        }
+    });
+    return formattedQuestion;
+}
+
+export function getVocabQuestion(words: WordData[]): QuizQuestion {
+    const word = getRandomElement(words) as WordData;
+    let question: QuizQuestion = {
+        question: `${word.definition} (${word.type})`,
         options: [word.word],
-        answer: 0
+        answer: 0,
+        answerDescription: `${word.word} (${word.type}):\n${word.definition}`,
+        useLatex: false
     };
 
     while (question.options.length < 4) {
         const optionWord = getRandomElement(words);
-        if (question.options.includes(optionWord.word) || optionWord.type !== question.type) {
+        if (question.options.includes(optionWord.word) || optionWord.type !== word.type) {
             continue;
         }
         const shouldPrepend = Math.random() > 0.5;
@@ -28,4 +55,20 @@ export function getQuestion(words: WordData[]): VocabQuestion {
         }
     }
     return question;
+}
+
+const vt323 = VT323({
+    weight: '400',
+    subsets: ['latin']
+});
+const lato = Lato({
+    weight: '400',
+    subsets: ['latin']
+});
+  
+export function getFont() {
+    const currentSettings = useRecoilValue(settingsState);
+    return currentSettings.usePixelFont
+        ? vt323.className
+        : lato.className;
 }

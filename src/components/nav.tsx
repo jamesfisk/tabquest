@@ -39,10 +39,10 @@ export default function Nav() {
                     <div className="z-50 hidden w-32 my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600" id="user-dropdown">
                         <ul className="py-2" aria-labelledby="user-menu-button">
                             <li>
-                                <div onClick={() => { changeView(View.Settings)}} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Settings</div>
+                                <div onClick={() => { changeView(View.Settings)}} className="cursor-pointer block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Settings</div>
                             </li>
                             <li>
-                                <div onClick={() => { changeView(View.About)}} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">About</div>
+                                <div onClick={() => { changeView(View.About)}} className="cursor-pointer block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">About</div>
                             </li>
                         </ul>
                     </div>

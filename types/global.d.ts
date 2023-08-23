@@ -14,4 +14,17 @@ declare global {
         options: string[],
         answer: number
     }
+    interface MathQuestion {
+        answer: string,
+        choices: { [key: string]: string },
+        question: string,
+        diagramRef: string
+    }
+    interface QuizQuestion {
+        answer: number,
+        answerDescription: string,
+        question: string,
+        options: string[],
+        useLatex: boolean
+    }
 }

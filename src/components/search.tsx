@@ -1,11 +1,13 @@
 import React, { use, useState } from 'react';
 import Image from 'next/image';
+import Latex from 'react-latex';
 
 const GOOGLE_SEARCH_URL_BASE = "https://www.google.com/search?q="
 
 export interface SearchProps {
     resetState: () => void,
-    word: VocabQuestion,
+    answer: string,
+    useLatex: boolean,
     wasCorrect: boolean
 }
 
@@ -32,9 +34,13 @@ export default function Search(props: SearchProps) {
                     <Image src={"/potion.png"} height={36} width={36} alt={'Potion'} className='pixel'/>
                 </div>
                 <div className='flex flex-row justify-between h-full'>
-                    <div className='hero-slash pixel'></div>
+                    <div className='hero-slash pixel h-32'></div>
                     <div className='text-lg w-1/2 pt-6'>
-                        <b className='text-2xl'>{props.word.options[props.word.answer]} ({props.word.type}): </b>{props.word.definition}
+                        <b className='text-2xl'>{
+                            props.useLatex
+                            ? <Latex>{props.answer}</Latex>
+                            : props.answer
+                        }</b>
                     </div>
                 </div>
             </div>
@@ -46,9 +52,13 @@ export default function Search(props: SearchProps) {
             <div>
                 <div className='text-center  text-3xl font-semibold'>Not quite!</div>
                 <div className='flex flex-row justify-between h-full'>
-                    <div className='hero-death pixel'></div>
+                    <div className='hero-death pixel h-32'></div>
                     <div className='text-lg w-1/2 pt-6'>
-                        <b className='text-2xl'>{props.word.options[props.word.answer]} ({props.word.type}): </b>{props.word.definition}
+                        <b className='text-2xl'>{
+                            props.useLatex
+                            ? <Latex>{props.answer}</Latex>
+                            : props.answer
+                        }</b>
                     </div>
                 </div>
             </div>
@@ -73,7 +83,7 @@ export default function Search(props: SearchProps) {
                 <div 
                     className='text-red-800 dark:text-red-400 w-full text-center text-sm cursor-pointer pt-2'
                     onClick={props.resetState}>
-                        Or try another word...?
+                        Or try again...?
                 </div>
             </div>
         </div>

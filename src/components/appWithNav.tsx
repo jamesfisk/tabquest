@@ -2,9 +2,10 @@ import { View, currentViewState } from "../store";
 import Nav from "./nav"
 import Quiz from "./quiz"
 import Slab from "./slab"
-import { RecoilRoot, useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilValue } from "recoil";
 import About from "./about";
 import Settings from "./settings";
+import { getFont } from "@/app/utils";
 
 export default function AppWithNav() {
     const viewState = useRecoilValue(currentViewState);
@@ -20,7 +21,7 @@ export default function AppWithNav() {
     }
 
     return (
-        <div className="z-10 absolute w-full">
+        <div className={`${getFont()} z-10 absolute w-full`}>
             <Nav/>
             <Slab>
                 {renderBody()}

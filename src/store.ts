@@ -1,7 +1,13 @@
-import { atom, selector } from "recoil";
+import { atom } from "recoil";
+
+export enum Subject {
+  Vocabulary,
+  Math
+}
 
 export interface Settings {
-  usePixelFont: boolean
+  usePixelFont: boolean,
+  subjects: Subject[]
 }
 
 export enum View {
@@ -17,7 +23,8 @@ export interface ViewState {
 export const settingsState = atom({
   key: "settings",
   default: {
-    usePixelFont: true
+    usePixelFont: true,
+    subjects: [Subject.Vocabulary]
   } as Settings,
 });
 
