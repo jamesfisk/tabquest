@@ -37,7 +37,7 @@ export default function RootLayout({
         <div className="layer pixel absolute foreground bg-cover w-full h-full"></div>
       </div>
       {children}
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js"></script>
+      <Script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js"></Script>
       </body>
     </html>
   )

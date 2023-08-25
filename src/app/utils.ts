@@ -1,6 +1,6 @@
-import { settingsState } from "@/store";
+import { Settings, settingsState } from "@/store";
 import { Lato, VT323 } from "next/font/google";
-import { useRecoilValue } from "recoil";
+import { RecoilState, useRecoilValue } from "recoil";
 
 
 export function getRandomElement(arr: any[]): any {
@@ -66,9 +66,8 @@ const lato = Lato({
     subsets: ['latin']
 });
   
-export function getFont() {
-    const currentSettings = useRecoilValue(settingsState);
-    return currentSettings.usePixelFont
+export function getFont(settings: Settings) {
+    return settings.usePixelFont
         ? vt323.className
         : lato.className;
 }

@@ -1,4 +1,4 @@
-import { View, currentViewState } from "../store";
+import { View, currentViewState, settingsState } from "../store";
 import Nav from "./nav"
 import Quiz from "./quiz"
 import Slab from "./slab"
@@ -9,6 +9,7 @@ import { getFont } from "@/app/utils";
 
 export default function AppWithNav() {
     const viewState = useRecoilValue(currentViewState);
+    const settings = useRecoilValue(settingsState);
     const renderBody = () => {
         switch(viewState.currentView) {
             case (View.Quiz):
@@ -21,7 +22,7 @@ export default function AppWithNav() {
     }
 
     return (
-        <div className={`${getFont()} z-10 absolute w-full`}>
+        <div className={`${getFont(settings)} z-10 absolute w-full`}>
             <Nav/>
             <Slab>
                 {renderBody()}
