@@ -1,7 +1,8 @@
-import { Subject, settingsState } from "../store";
+import { Subject, View, currentViewState, settingsState } from "../store";
 import { useRecoilState } from "recoil";
 
 export default function Settings() {
+    const [viewState, setCurrentViewState] = useRecoilState(currentViewState);
     const [settings, setSettings] = useRecoilState(settingsState);
     const setUsePixelFonts = (e: React.ChangeEvent<HTMLInputElement>) => {
         setSettings((prev) => {
@@ -43,6 +44,9 @@ export default function Settings() {
     }
     return(
         <div className="h-full px-3 flex flex-col justify-center">
+            <div className="w-full flex flex-row justify-end text-xl cursor-pointer">
+                <div onClick={() => { setCurrentViewState({currentView: View.Quiz }) }}>X</div>
+            </div>
             <div id="controls">
                 <div>Display:</div>
                 <div className="flex items-center mb-4">

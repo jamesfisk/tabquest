@@ -90,12 +90,12 @@ export default function Quiz() {
             }
           </div>
         </div>
-        <div className='options flex flex-wrap pt-4 justify-center'>
+        <div className={`options ${question!.options.length % 2 === 0 ? 'grid gap-2 md:gap-4 p-2 grid-cols-2' :'flex flex-wrap'} pt-4 justify-center`}>
             {
             question!.options.map((val, i) => {
                 return <button 
                     key={i} 
-                    className='w-full sm:w-1/3 m-1 p-3 z-50 text-xl bg-slate-100 border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700' 
+                    className={`w-full ${question!.options.length % 2 === 0 ? 'w-1/2' : 'sm:w-1/3 m-1'} p-3 z-50 text-xl bg-slate-100 border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700`} 
                     value={i} 
                     onClick={onAnswerClick}>
                       {
