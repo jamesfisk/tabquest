@@ -33,6 +33,7 @@ export default function Quiz() {
   }
   const { data, error } = useSWR(endpoint, fetcher);
   const [question, setQuestion] = useState<QuizQuestion | undefined>(undefined);
+  const [answer, setAnswer] = useState<QuizQuestion | undefined>();
   const [answerState, setAnswerState] = useState(QuestionAnswerState.Loading);
 
   //Handle the error state
@@ -42,24 +43,25 @@ export default function Quiz() {
   else if (!data && ![QuestionAnswerState.Loading, QuestionAnswerState.Error].includes(answerState)) {
     setAnswerState(QuestionAnswerState.Loading);
   }
-  else if (data && question === undefined) {
+  else if (data && question === undefined && ![QuestionAnswerState.AnsweredCorrectly, QuestionAnswerState.AnsweredIncorrectly].includes(answerState)) {
     setQuestion(data);
     setAnswerState(QuestionAnswerState.Unanswered);
   }
 
   const onAnswerClick = (e: React.FormEvent<HTMLButtonElement>) => {
+      setAnswer(question);
       if (Number(e.currentTarget.value) === question!.answer) {
         setAnswerState(QuestionAnswerState.AnsweredCorrectly);
       }
       else {
         setAnswerState(QuestionAnswerState.AnsweredIncorrectly);
       }
+      setQuestion(undefined);
+      mutate(endpoint);
   }
 
   const resetAnswerState = () => {
     setAnswerState(QuestionAnswerState.Loading);
-    setQuestion(undefined);
-    mutate(endpoint);
   }
 
   const renderLoading = () => {
@@ -117,9 +119,9 @@ export default function Quiz() {
       case(QuestionAnswerState.Unanswered):
         return renderQuestion();
       case(QuestionAnswerState.AnsweredCorrectly):
-        return <Search answer={question!.answerDescription} useLatex={question?.useLatex!} wasCorrect={true} resetState={resetAnswerState} />;
+        return <Search answer={answer!.answerDescription} useLatex={answer?.useLatex!} wasCorrect={true} resetState={resetAnswerState} />;
       case(QuestionAnswerState.AnsweredIncorrectly):
-        return <Search answer={question!.answerDescription} useLatex={question?.useLatex!} wasCorrect={false} resetState={resetAnswerState} />;
+        return <Search answer={answer!.answerDescription} useLatex={answer?.useLatex!} wasCorrect={false} resetState={resetAnswerState} />;
       case(QuestionAnswerState.Loading):
         return renderLoading();
       case(QuestionAnswerState.Error):
