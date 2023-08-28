@@ -64,7 +64,7 @@ export default function Quiz() {
 
   const renderLoading = () => {
     return (
-        <div className='h-96 flex flex-row justify-center'>
+        <div className='h-80 flex flex-row justify-center'>
             <div className='hero-loading pixel h-full'></div>
       </div>
     );
