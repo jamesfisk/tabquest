@@ -171,6 +171,6 @@ body {
   }
 }
 
-#help-menu {
+#help-menu > button {
   background: none;
 }

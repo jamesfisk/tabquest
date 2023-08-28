@@ -33,9 +33,8 @@ export default function Nav() {
                     </div>
                 </div>
                 <ul className="font-medium text-lg flex flex-col rounded-lg md:flex-row md:space-x-8">
-                    <li>
+                    <li id='help-menu'>
                     <Dropdown
-                    id="help-menu"
                     label="ℹ️"
                     className='block py-2 pl-3 pr-4'
                     >

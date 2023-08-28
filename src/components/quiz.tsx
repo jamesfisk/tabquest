@@ -59,12 +59,12 @@ export default function Quiz() {
   const resetAnswerState = () => {
     setAnswerState(QuestionAnswerState.Loading);
     setQuestion(undefined);
-    mutate(endpoint, data);
+    mutate(endpoint);
   }
 
   const renderLoading = () => {
     return (
-        <div className='h-full flex flex-row justify-center'>
+        <div className='h-96 flex flex-row justify-center'>
             <div className='hero-loading pixel h-full'></div>
       </div>
     );
