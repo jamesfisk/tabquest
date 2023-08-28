@@ -31,7 +31,9 @@ export default function Quiz() {
     default:
       endpoint = '/api/vocabquestion'
   }
-  const { data, error } = useSWR(endpoint, fetcher);
+  const { data, error } = useSWR(endpoint, fetcher, {
+    onSuccess: (data) => { console.log(`success: ${JSON.stringify(data)}`)}
+  });
   const [question, setQuestion] = useState<QuizQuestion | undefined>(undefined);
   const [answer, setAnswer] = useState<QuizQuestion | undefined>();
   const [answerState, setAnswerState] = useState(QuestionAnswerState.Loading);
