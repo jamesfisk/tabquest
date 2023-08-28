@@ -1,4 +1,5 @@
-import { atom } from "recoil";
+import { AtomEffect, RecoilState, atom } from "recoil";
+import { recoilPersist } from "recoil-persist";
 
 export enum Subject {
   Vocabulary,
@@ -20,13 +21,16 @@ export interface ViewState {
     currentView: View
 }
 
+const { persistAtom } = recoilPersist({ key: 're-persist-settings' });
+
 export const settingsState = atom({
   key: "settings",
   default: {
     usePixelFont: true,
     subjects: [Subject.Vocabulary]
   } as Settings,
-});
+  effects_UNSTABLE: [persistAtom],
+}) as RecoilState<Settings>;
 
 export const currentViewState = atom({
     key: "currentView",
