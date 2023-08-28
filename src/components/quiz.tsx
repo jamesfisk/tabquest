@@ -7,7 +7,6 @@ import { Subject, settingsState } from '@/store';
 import { getRandomElement } from '@/app/utils';
 
 //fetcher function to wrap the native fetch function and return the result of a call to url in json format
-const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 export enum QuestionAnswerState {
   Loading,
@@ -31,24 +30,47 @@ export default function Quiz() {
     default:
       endpoint = '/api/vocabquestion'
   }
-  const { data, error } = useSWR(endpoint, fetcher, {
-    onSuccess: (data) => { console.log(`success: ${JSON.stringify(data)}`)}
+  const fetcher = (url: string) => {
+    if (![QuestionAnswerState.AnsweredCorrectly, QuestionAnswerState.AnsweredIncorrectly].includes(answerState)){
+      setAnswerState(QuestionAnswerState.Loading);
+    }
+    return fetch(url).then((res) => res.json())
+  };
+  useSWR(endpoint, fetcher, {
+    onSuccess: (data) => { 
+      console.log(`success: ${JSON.stringify(data)}`)
+      setQuestion(data);
+      if (![QuestionAnswerState.AnsweredCorrectly, QuestionAnswerState.AnsweredIncorrectly].includes(answerState)){
+        setAnswerState(QuestionAnswerState.Unanswered);
+      }
+    },
+    onError: (error) => {
+      console.log(`error: ${JSON.stringify(error)}`)
+      setAnswerState(QuestionAnswerState.Error);
+
+    },
+    revalidateOnFocus: false,
+    revalidateOnMount:true,
+    revalidateOnReconnect: false,
+    refreshWhenOffline: false,
+    refreshWhenHidden: false,
+    refreshInterval: 0
   });
   const [question, setQuestion] = useState<QuizQuestion | undefined>(undefined);
   const [answer, setAnswer] = useState<QuizQuestion | undefined>();
   const [answerState, setAnswerState] = useState(QuestionAnswerState.Loading);
 
-  //Handle the error state
-  if (error && answerState !== QuestionAnswerState.Error) {
-    setAnswerState(QuestionAnswerState.Error);
-  }
-  else if (!data && ![QuestionAnswerState.Loading, QuestionAnswerState.Error].includes(answerState)) {
-    setAnswerState(QuestionAnswerState.Loading);
-  }
-  else if (data && question === undefined && ![QuestionAnswerState.AnsweredCorrectly, QuestionAnswerState.AnsweredIncorrectly].includes(answerState)) {
-    setQuestion(data);
-    setAnswerState(QuestionAnswerState.Unanswered);
-  }
+  // //Handle the error state
+  // if (error && answerState !== QuestionAnswerState.Error) {
+  //   setAnswerState(QuestionAnswerState.Error);
+  // }
+  // else if (!data && ![QuestionAnswerState.Loading, QuestionAnswerState.Error].includes(answerState)) {
+  //   setAnswerState(QuestionAnswerState.Loading);
+  // }
+  // else if (data && question === undefined && ![QuestionAnswerState.AnsweredCorrectly, QuestionAnswerState.AnsweredIncorrectly].includes(answerState)) {
+  //   setQuestion(data);
+  //   setAnswerState(QuestionAnswerState.Unanswered);
+  // }
 
   const onAnswerClick = (e: React.FormEvent<HTMLButtonElement>) => {
       setAnswer(question);
@@ -58,12 +80,12 @@ export default function Quiz() {
       else {
         setAnswerState(QuestionAnswerState.AnsweredIncorrectly);
       }
-      setQuestion(undefined);
-      mutate(endpoint);
   }
 
   const resetAnswerState = () => {
     setAnswerState(QuestionAnswerState.Loading);
+    setQuestion(undefined);
+    mutate(endpoint);
   }
 
   const renderLoading = () => {
