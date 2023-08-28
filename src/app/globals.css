@@ -170,3 +170,7 @@ body {
     height:50vh;
   }
 }
+
+#help-menu {
+  background: none;
+}

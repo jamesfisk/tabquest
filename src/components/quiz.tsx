@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import useSWR from 'swr';
+import useSWR, { mutate } from 'swr';
 import Search from './search';
 import Latex from 'react-latex';
 import { useRecoilValue } from "recoil";
@@ -59,6 +59,7 @@ export default function Quiz() {
   const resetAnswerState = () => {
     setAnswerState(QuestionAnswerState.Loading);
     setQuestion(undefined);
+    mutate(endpoint, data);
   }
 
   const renderLoading = () => {

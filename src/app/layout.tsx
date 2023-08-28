@@ -1,12 +1,5 @@
-import Nav from '@/components/nav'
 import './globals.css'
-import type { Metadata } from 'next'
 import Script from 'next/script'
-
-export const metadata: Metadata = {
-  title: 'TabQuest',
-  description: 'Begin your TabQuest',
-}
 
 export default function RootLayout({
   children,
@@ -37,7 +30,6 @@ export default function RootLayout({
         <div className="layer pixel absolute foreground bg-cover w-full h-full"></div>
       </div>
       {children}
-      <Script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js"></Script>
       </body>
     </html>
   )

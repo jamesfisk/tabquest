@@ -1,3 +1,4 @@
+import { Dropdown } from 'flowbite-react';
 import { View, currentViewState } from '../store';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -33,7 +34,15 @@ export default function Nav() {
                 </div>
                 <ul className="font-medium text-lg flex flex-col rounded-lg md:flex-row md:space-x-8">
                     <li>
-                    <button className="block py-2 pl-3 pr-4 " aria-current="page" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
+                    <Dropdown
+                    id="help-menu"
+                    label="ℹ️"
+                    className='block py-2 pl-3 pr-4'
+                    >
+                        <div onClick={() => { changeView(View.Settings)}} className="cursor-pointer block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Settings</div>
+                        <div onClick={() => { changeView(View.About)}} className="cursor-pointer block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">About</div>
+                    </Dropdown>
+                    {/* <button className="block py-2 pl-3 pr-4 " aria-current="page" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
                         ℹ️
                     </button>
                     <div className="z-50 hidden w-32 my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600" id="user-dropdown">
@@ -45,7 +54,7 @@ export default function Nav() {
                                 <div onClick={() => { changeView(View.About)}} className="cursor-pointer block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">About</div>
                             </li>
                         </ul>
-                    </div>
+                    </div> */}
                     </li>
                 </ul>
             </div>
