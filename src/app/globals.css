@@ -155,12 +155,18 @@ body {
 #slab {
   min-height:50vh;
 }
+.min-h-slab {
+  min-height:50vh;
+}
 
 #question {
   min-height: 20rem;
 }
 @media only screen and (max-width: 640px)  {
   #slab {
+    height:50vh;
+  }
+  .min-h-slab {
     height:50vh;
   }
 }

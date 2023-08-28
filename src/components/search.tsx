@@ -66,7 +66,7 @@ export default function Search(props: SearchProps) {
     }
 
     return (
-        <div className='flex flex-col justify-between h-full'>
+        <div className='flex flex-col justify-between h-full min-h-slab'>
             { props.wasCorrect ? gotItRight() : gotItWrong() }
             <div className={`pb-6 md:pb-0`}>
                 <form onSubmit={doSearch} className={`flex flex-row w-full `}>
