@@ -37,7 +37,7 @@ export default function Quiz() {
     return fetch(url).then((res) => res.json())
   };
   useSWR(endpoint, fetcher, {
-    onSuccess: (data) => { 
+    onSuccess: (data: QuizQuestion) => { 
       console.log(`success: ${JSON.stringify(data)}`)
       setQuestion(data);
       if (![QuestionAnswerState.AnsweredCorrectly, QuestionAnswerState.AnsweredIncorrectly].includes(answerState)){
